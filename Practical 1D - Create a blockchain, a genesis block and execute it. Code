@@ -1,0 +1,38 @@
+genesis_block = {
+'previous_hash':'',
+'index':0,
+'transaction':[],
+'nonce':23
+}
+
+blockchain = [genesis_block]
+
+def get_LAST_VALUE():
+  return(blockchain[-1])
+
+def add_value(sender, recipient, amount=1.0):
+  transaction = {'sender':sender,
+                 'recipient':recipient,
+                 'amount':amount}
+  open_transactions.append(transaction)
+
+def get_transaction_value():
+  tx_sender = raw_input('Enter the sender:')
+  tx_recipient = raw_input('Enter the recipient of the transaction:')
+  tx_amount = float(input('Enter your transaction amount: '))
+  return tx_sender, tx_recipient, tx_amount
+
+def get_user_choice():
+  user_input = input("Please give your choice here:")
+  return user_input
+
+def print_block():
+  for block in blockchain:
+    print("7_GovindSaini \n)
+    print("Here is your block")
+    print(block)
+
+print_block()
+
+
+
