@@ -1,0 +1,461 @@
+Practical No : 3
+
+ Aim : Implement and demonstrate the use of the following in Solidity
+
+ 3a ) Variable, Operators, Loops, Decision Making, Strings, Arrays, Enums,Structs, Mappings, Conversions, Ether Units, Special Variables.
+
+ Variable
+
+Code :
+pragma solidity ^0.5.0;
+contract Variable {
+unit storedData;
+constructor() public {
+storedData = 40;
+}
+function getResult() public view returns(unit){
+unit a = 1;
+unit b = 5;
+unit result = a+b;
+require(condition,"message to be displayed")
+return storedData;
+}
+}
+ --------------------------------------------------------
+Operators :
+ Arthmetic Operator
+ Code:
+pragma solidity ^0.5.0;
+contract ArithmeticOperators {
+unit16 public a = 50;
+unit16 public b = 20;
+
+unit public sum = a+b;
+unit public diff = a-b;
+unit public mul = a*b;
+
+unit public div = a/b;
+unit public mod = a%b;
+
+unit public dec = --b;
+unit public inc = ++a;
+}
+ --------------------------------------------------------
+Relational Operator
+ Code:
+pragma solidity ^0.5.0;
+contract RelationalOperators {
+unit16 public a = 70;
+unit16 public b = 10;
+
+bool public eq = a== b;
+
+bool public noteq = a != b;
+
+bool public gtr = a>b;
+
+bool public les = a<b;
+
+bool public gtreq = a>=b;
+bool public leseq = a<=b;
+} --------------------------------------------------------
+Logical Operator
+ Code :
+pragma solidity ^0.5.0;
+contract logicalOperator {
+function Logic(
+bool a, bool b) public view returns(
+bool,bool,bool){
+
+bool and = a&&b;
+
+bool or = a||b;
+
+bool not =!a;
+return(and,or,not);
+}
+} --------------------------------------------------------
+Bitwise Operator
+ Code:
+pragma solidity ^0.5.0;
+contract BitwiseOperator {
+unit16 public a = 20;
+unit16 public b = 50;
+
+unit16 public and = a&b;
+
+unit16 public or = a|b;
+unit16 public xor = a^b;
+
+unit16 public leftshift = a<<b;
+unit16 public rightshift = a>>b;
+
+unit16 public not = ~a;
+
+}
+ -------------------------------------------------------
+Assignment Operator
+ Code :
+pragma solidity ^0.5.0;
+contract AssignmentOperator {
+unit16 public assignment = 20;
+unit public assignment_add = 50;
+unit public assign_sub = 50;
+unit public assing_mul = 10;
+unit public assing_div = 50;
+unit public assing_mod = 32;
+
+function getResult() public{
+assignment_add += 10;
+assign_sub -= 20;
+assign_mul *= 10;
+assign_div /= 10;
+assign_mod %= 20;
+return;
+}
+} --------------------------------------------------------
+Loops
+ whileLoop
+ code:
+pragma solidity ^0.5.0;
+contract whileLoop {
+unit[] data;
+unit8 j = 0;
+function loop(
+)public returns(unit[] memory){
+while(j < 16){
+j++;
+data.push(j);
+}
+return data;
+}
+} --------------------------------------------------------
+Dowhile loop
+ Code:
+pragma solidity ^0.5.0;
+contract dowhileLoop {
+unit[] data;
+unit8 j = 0;
+function loop(
+)public returns(unit[] memory){
+do{
+j++;
+data.push(j);
+}while(j < 8);
+return data;
+}
+} --------------------------------------------------------
+Forloop
+ Code :
+pragma solidity ^0.5.0;
+contract forLoop {
+unit[] data;
+
+function loop(
+)public returns(unit[] memory){
+for(unit i=0; i<4; i++){
+data.push(i);
+}
+return data;
+}
+}
+-------------------------------------------------------
+Decision making
+ If statement
+ Code:
+pragma solidity ^0.5.0;
+contract ifStatement {
+unit i = 20;
+
+function decision_making(
+)public returns(bool){
+if(i<20){
+return true;
+}
+}
+}
+-------------------------------------------------------
+If…else statement
+ Code :
+pragma solidity ^0.5.0;
+contract ifEleStatement {
+unit i = 20;
+bool even;
+
+function decision_making(
+)public payable returns(bool){
+if(i%2 == 0){
+even = true;
+}
+else{
+even = false;
+}
+return even;
+}
+} --------------------------------------------------------
+If…else if…else statement
+ Code :
+pragma solidity ^0.5.0;
+contract ifEleIfStatement {
+unit i = 12;
+string result;
+
+function decision_making(
+)public returns(string memory){
+if(i<10){
+result = "less than 10";
+}
+else if{
+result = "equal than 10";
+}
+else{
+result = "grater than 10";
+}
+return result;
+}
+}
+ -------------------------------------------------------
+String
+ Code:
+contract string {
+string[] public row;
+function getRow() public view returns(string[] memory{
+return row;
+}
+function pushToRow(string memory newValue)public{
+row.push(newValue);
+}
+}
+-------------------------------------------------------
+Array
+ Code :
+pragma soidity ^0.5.0;
+contract test {
+function testArray() public pure{
+unit len = 7;
+unit[] memory a = new unit[](7);
+bytes memory b = new bytes(len);
+
+assert(a.length == 7);
+assert(b.length == len);
+a[6] = 8;
+assert(a[6] == 8);
+unit[3] memory c = [unit(1),2,3];
+assert(c.length == 3);
+}
+}
+-------------------------------------------------------
+Enums
+ Code :
+pragma soidity ^0.5.0;
+contract Enums {
+enum FreshJuiceSize{SMALL, MEDIUM, LARGE}
+FreshJuiceSize choice;
+FreshJuiceSize constant defaultchoice = FreshJuiceSize.MEDIUM;
+
+function setLarge() public {
+choice = FreshJuiceSize.Large;
+}
+function getChoice() public view returns(FreshJuiceSize){
+return choice;
+}
+function getDefaultChoice() public pure returns (unit){
+return unit(defaultChoice);
+}
+}
+-------------------------------------------------------
+Struct
+ Code:
+pragma soidity ^0.5.0;
+contract Struct {
+struct Book {
+string title;
+string author;
+unit book_id;
+}
+Book Book;
+
+function setBook() public{
+book = Book('Learn JavaScript','TP',4);
+}
+function getBookID() public view returns(unit){
+return book.book_id;
+}
+}
+------------------------------------------------------- 
+Mapping
+ Code:
+contract Mapping {
+struct student {
+string name;
+string subject;
+unit8 marks;
+}
+mapping (
+address => student)result;
+address[]public student_result;
+
+function adding_values()public{
+var student 
+= result[0xDEE7796E89C82C36BADD1375076F39D69FafE252];
+
+student.name = "John";
+student.subject = "Chemistry";
+student.mark = 88;
+student_resut.push(
+0xDEE7796E89C82C36BADD1375076F39D69FafE252) -1;
+}
+} -------------------------------------------------------- Special Variable
+ Code:
+pragma soidity ^0.5.0;
+contract SpecialVariable {
+mappling (address => unit)rollNo;
+functionsetRollNO(unit _myNumber) public
+{
+rillNo[msg.sender] = _myNumber;
+}
+
+function whatIsMyRollNumber()
+public view returns(unit)
+{
+return rollNo[msh.sender];
+}
+}
+--------------------------------------------------------
+3b ) Functions, Function Modifiers, View functions, Pure Functions,Fallback Function, Function Overloading, Mathematical functions,Cryptographic functions.  
+
+Function
+ Code:
+pragma soidity ^0.5.0;
+contract Function {
+function getResult() public view returns(unit product, unit sum){
+unit a = 11;
+unit b = 20;
+product = a*b;
+sum a+b;
+}
+}
+--------------------------------------------------------
+Functions Modifiers
+ Code :
+pragma soidity ^0.5.0;
+contract Owner {
+addresss owner;
+constuctor() public {
+owner = msg.sender;
+}
+modifier onlyOwner {
+requir(msg.sender == owner);
+_;
+}
+modifier costs(unit price) {
+if(msg.value >= price){
+_;
+}
+}
+}
+contract Register is Owner {
+mapping(address => bool)registeredAddresses;
+unit price;
+constuctor(unit initialPrice) public {price = initialPrice;}
+
+function register() public payable costs(price) {
+registeredAddresses[msg.sender] = true;
+}
+function changePrice(unit _price) public onlyOwner {
+price = _price;
+}
+}
+--------------------------------------------------------
+View function
+ Code:
+pragma soidity ^0.5.0;
+contract ViewFunction {
+unit num1 = 2;
+unit num2 = 4;
+
+function getResult(
+)public view retuens(
+unit product, unit sum){
+unit num1 = 10;
+unit num2 = 16;
+product = num1 + num2;
+sum = num1+num2;
+}
+}
+--------------------------------------------------------
+Pure function
+ Code :
+contract PureFunction {
+function getResult(
+)public view retuens(
+unit product, unit sum){
+unit num1 = 2;
+unit num2 = 10;
+product = num1 + num2;
+sum = num1+num2;
+}
+}
+--------------------------------------------------------
+Fallback function
+ Code:
+pragma soidity ^0.5.0;
+contract FallFunction {
+unit public x;
+function() external {x =x1;}
+}
+contract Sink {
+function() external payble {}
+}
+contract Caller {
+function callTest(Test test) public returns (bool)
+(bool success,)=address(test).call(abi.encodeWithSignature("nonExistingFunction()"));
+require(success);
+
+address payble testPayable = address(unit160(address(test)));
+return(testPayable.send(2 ether));
+}
+
+function callSink(Sink sink) public returns(bool) {
+address payable sinkPayable = address(sink);
+return(sinkPayable.send(2 ether));
+}
+}
+--------------------------------------------------------
+Function Overloading
+ Code:
+pragma soidity ^0.5.0;
+contract FunctionOverloading {
+function getSum(unit a,unit b)public pure returns(unit){
+return a+b;
+}
+function getSum(unit a,unit b,unit c)public pure returns(unit){
+return a+b+c;
+}
+function callSumwithTwoArguments()public pure returns(unit){
+return getSum(1,2);
+}
+function callSumwithThreeArguments()public pure returns(unit){
+return getSum(1,2,3);
+}
+}
+--------------------------------------------------------
+Mathematical Function
+ Code:
+pragma soidity ^0.5.0;
+contract MathematicalFunction {
+function callAddMod()public pure returns(unit){
+return addmod(14,15,13);
+}
+function callMulMod()public pure returns(unit){
+return mulmod(14,15,13);
+}
+}
+--------------------------------------------------------
+Cryptographic function
+ Code:
+contract CrytographicFunction {
+function callKeccak256()public pure returns(bytes32 result){
+return callKeccak256("ABC");
+}
+}
