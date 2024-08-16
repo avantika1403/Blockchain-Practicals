@@ -1,0 +1,133 @@
+pragma soidity ^0.5.0;
+contract Function {
+function getResult() public view returns(unit product, unit sum){
+unit a = 11;
+unit b = 20;
+product = a*b;
+sum a+b;
+}
+}
+--------------------------------------------------------
+Functions Modifiers
+ Code :
+pragma soidity ^0.5.0;
+contract Owner {
+addresss owner;
+constuctor() public {
+owner = msg.sender;
+}
+modifier onlyOwner {
+requir(msg.sender == owner);
+_;
+}
+modifier costs(unit price) {
+if(msg.value >= price){
+_;
+}
+}
+}
+contract Register is Owner {
+mapping(address => bool)registeredAddresses;
+unit price;
+constuctor(unit initialPrice) public {price = initialPrice;}
+
+function register() public payable costs(price) {
+registeredAddresses[msg.sender] = true;
+}
+function changePrice(unit _price) public onlyOwner {
+price = _price;
+}
+}
+--------------------------------------------------------
+View function
+ Code:
+pragma soidity ^0.5.0;
+contract ViewFunction {
+unit num1 = 2;
+unit num2 = 4;
+
+function getResult(
+)public view retuens(
+unit product, unit sum){
+unit num1 = 10;
+unit num2 = 16;
+product = num1 + num2;
+sum = num1+num2;
+}
+}
+--------------------------------------------------------
+Pure function
+ Code :
+contract PureFunction {
+function getResult(
+)public view retuens(
+unit product, unit sum){
+unit num1 = 2;
+unit num2 = 10;
+product = num1 + num2;
+sum = num1+num2;
+}
+}
+--------------------------------------------------------
+Fallback function
+ Code:
+pragma soidity ^0.5.0;
+contract FallFunction {
+unit public x;
+function() external {x =x1;}
+}
+contract Sink {
+function() external payble {}
+}
+contract Caller {
+function callTest(Test test) public returns (bool)
+(bool success,)=address(test).call(abi.encodeWithSignature("nonExistingFunction()"));
+require(success);
+
+address payble testPayable = address(unit160(address(test)));
+return(testPayable.send(2 ether));
+}
+
+function callSink(Sink sink) public returns(bool) {
+address payable sinkPayable = address(sink);
+return(sinkPayable.send(2 ether));
+}
+}
+--------------------------------------------------------
+Function Overloading
+ Code:
+pragma soidity ^0.5.0;
+contract FunctionOverloading {
+function getSum(unit a,unit b)public pure returns(unit){
+return a+b;
+}
+function getSum(unit a,unit b,unit c)public pure returns(unit){
+return a+b+c;
+}
+function callSumwithTwoArguments()public pure returns(unit){
+return getSum(1,2);
+}
+function callSumwithThreeArguments()public pure returns(unit){
+return getSum(1,2,3);
+}
+}
+--------------------------------------------------------
+Mathematical Function
+ Code:
+pragma soidity ^0.5.0;
+contract MathematicalFunction {
+function callAddMod()public pure returns(unit){
+return addmod(14,15,13);
+}
+function callMulMod()public pure returns(unit){
+return mulmod(14,15,13);
+}
+}
+--------------------------------------------------------
+Cryptographic function
+ Code:
+contract CrytographicFunction {
+function callKeccak256()public pure returns(bytes32 result){
+return callKeccak256("ABC");
+}
+}
